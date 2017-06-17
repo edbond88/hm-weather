@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-import WeatherList from './WeatherList'
-import WeatherCurrentDay from './WeatherCurrentDay'
+import ForecastList from './ForecastList/ForecastList'
+import ForecastCurrentDay from './ForecastCurrentDay/ForecastCurrentDay'
 
-const createForecast = list => {
+/**
+ * Creating array of days, that contain
+ * items with forecast for every 3 hours
+ * @param  {array} list
+ * @return {array}
+ */
+const createSeveralDaysForecast = list => {
   const currentDay = moment().date()
   let newForecast = []
   let i = 0
@@ -45,10 +51,13 @@ class WeatherView extends Component {
   render() {
     const { weatherList, city } = this.props
 
+    // First item in array - current day and current time
+    const currentItem = weatherList[0]
+
     return (
       <div className="weather-view">
-        <WeatherCurrentDay currentItem={weatherList[0]} city={city}/>
-        <WeatherList list={createForecast(weatherList)} />
+        <ForecastCurrentDay currentItem={currentItem} city={city}/>
+        <ForecastList list={createSeveralDaysForecast(weatherList)} />
       </div>
     )
   }

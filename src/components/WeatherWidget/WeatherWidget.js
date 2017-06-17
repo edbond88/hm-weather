@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './Weather.css'
+import './WeatherWidget.css'
 
 import WeatherView from './WeatherView'
 
-class Weather extends Component {
+class WeatherWidget extends Component {
   static propTypes = {
-    weatherActions: PropTypes.shape({
+    weatherWidgetActions: PropTypes.shape({
       getForecast: PropTypes.func.isRequired,
       changeCity: PropTypes.func.isRequired
     }),
-    weather: PropTypes.shape({
+    forecast: PropTypes.shape({
       cityInput: PropTypes.string.isRequired,
       list: PropTypes.array.isRequired,
       city: PropTypes.object.isRequired
-    }),
+    }).isRequired
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const {
-      weatherActions: {
+      weatherWidgetActions: {
         getForecast
       }
     } = this.props
@@ -37,7 +37,7 @@ class Weather extends Component {
 
   changeCityInput = e => {
     const {
-      weatherActions: {
+      weatherWidgetActions: {
         changeCity
       }
     } = this.props
@@ -49,7 +49,7 @@ class Weather extends Component {
   submitForm = e => {
     e.preventDefault()
     const {
-      weatherActions: {
+      weatherWidgetActions: {
         getForecast
       }
     } = this.props
@@ -63,7 +63,7 @@ class Weather extends Component {
 
   render() {
     const {
-      weather: {
+      forecast: {
         cityInput,
         list,
         city
@@ -101,4 +101,4 @@ class Weather extends Component {
   }
 }
 
-export default Weather
+export default WeatherWidget

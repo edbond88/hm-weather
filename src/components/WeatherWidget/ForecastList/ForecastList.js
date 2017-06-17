@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-import './WeatherList.css'
+import './ForecastList.css'
 
-class WeatherList extends Component {
+class ForecastList extends Component {
   static propTypes = {
     list: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
       dt_txt: PropTypes.string,
@@ -46,4 +46,4 @@ class WeatherList extends Component {
   }
 }
 
-export default WeatherList
+export default ForecastList

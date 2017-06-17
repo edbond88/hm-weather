@@ -3,31 +3,32 @@ import {
   FORECAST_SUCCESS,
   FORECAST_FAIL,
   CHANGE_CITY_INPUT
-} from '../constants/weather'
+} from '../constants/forecast'
 
 const initialState = {
   cityInput: '',
-  weatherFetching: false,
+  isForecastFetching: false,
   list: [],
   city: {}
 }
 
-export default function weather (state = initialState, action) {
+export default function forecast (state = initialState, action) {
   switch (action.type) {
     case CHANGE_CITY_INPUT:
       return { ...state, cityInput: action.payload }
 
     case FORECAST_START:
-      return { ...state, weatherFetching: true }
+      return { ...state, isForecastFetching: true }
 
     case FORECAST_FAIL:
-      return { ...state, weatherFetching: false }
+      return { ...state, isForecastFetching: false }
 
     case FORECAST_SUCCESS:
       return {
         ...state,
         list: action.payload.list,
-        city: action.payload.city
+        city: action.payload.city,
+        isForecastFetching: false
       }
 
     default:

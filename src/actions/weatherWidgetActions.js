@@ -3,7 +3,7 @@ import {
   FORECAST_SUCCESS,
   FORECAST_FAIL,
   CHANGE_CITY_INPUT
-} from '../constants/weather'
+} from '../constants/forecast'
 
 import {
   URL,
@@ -20,7 +20,7 @@ export const getForecast = (opt) => {
       type: FORECAST_START
     })
     let reqUrl
-    // const reqUrl = process.env.PUBLIC_URL + '/forecast.json'
+
     if (opt.city) {
       reqUrl = `${URL.forecast}?q=${opt.city}&APPID=${API_KEY}&units=metric`
     } else if (opt.coords) {
@@ -28,8 +28,6 @@ export const getForecast = (opt) => {
     }
 
     serverRequest({
-      // test response
-      // method: 'GET',
       url: reqUrl
     }).then((res) => {
       dispatch({
@@ -41,7 +39,7 @@ export const getForecast = (opt) => {
       dispatch({
         type: FORECAST_FAIL
       })
-      alert('Type valid city')
+      alert('Input valid city name')
     })
 
   }
