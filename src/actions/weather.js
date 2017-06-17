@@ -14,14 +14,18 @@ import {
   serverRequest
 } from '../helpers/'
 
-export const getForecast = (location) => {
+export const getForecast = (opt) => {
   return dispatch => {
     dispatch({
       type: FORECAST_START
     })
-
-    const reqUrl = `${URL.forecast}?q=${location}&APPID=${API_KEY}&units=metric`
+    let reqUrl
     // const reqUrl = process.env.PUBLIC_URL + '/forecast.json'
+    if (opt.city) {
+      reqUrl = `${URL.forecast}?q=${opt.city}&APPID=${API_KEY}&units=metric`
+    } else if (opt.coords) {
+      reqUrl = `${URL.forecast}?lat=${opt.coords.lat}&lon=${opt.coords.lon}&APPID=${API_KEY}&units=metric`
+    }
 
     serverRequest({
       // test response

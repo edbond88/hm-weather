@@ -24,7 +24,15 @@ class Weather extends Component {
       }
     } = this.props
 
-    // getForecast('London')
+    navigator.geolocation.getCurrentPosition(function(position) {
+      getForecast({
+        coords: {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        }
+      })
+    })
+
   }
 
   changeCityInput = e => {
@@ -48,7 +56,9 @@ class Weather extends Component {
     const FD = new FormData(e.target)
     const val = FD.get('city')
 
-    getForecast(val)
+    getForecast({
+      city: val
+    })
   }
 
   render() {

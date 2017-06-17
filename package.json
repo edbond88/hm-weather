@@ -2,7 +2,6 @@
   "name": "hm-weather",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://edbond88.github.io/hm-weather/",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
