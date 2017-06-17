@@ -42,22 +42,13 @@ class WeatherView extends Component {
     city: PropTypes.object.isRequired
   }
 
-  constructor(props) {
-    super(props)
-    const { weatherList } = this.props
-
-    this.state = {
-      forecast: createForecast(weatherList)
-    }
-  }
-
   render() {
     const { weatherList, city } = this.props
 
     return (
       <div className="weather-view">
         <WeatherCurrentDay currentItem={weatherList[0]} city={city}/>
-        <WeatherList list={this.state.forecast} />
+        <WeatherList list={createForecast(weatherList)} />
       </div>
     )
   }
