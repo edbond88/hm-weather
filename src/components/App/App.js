@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import Header from '../../components/Header/Header'
+import Weather from '../../containers/Weather'
 
 class App extends Component {
   _appInit () {
@@ -22,10 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="l-app">
-        <Header />
-        <div className="l-body">
-          weather start app
-        </div>
+        <Weather />
       </div>
     )
   }

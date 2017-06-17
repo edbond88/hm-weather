@@ -1,0 +1,4 @@
+export const FORECAST_START = 'weather/REQ_FORECAST_START'
+export const FORECAST_SUCCESS = 'weather/REQ_FORECAST_SUCCESS'
+export const FORECAST_FAIL = 'weather/REQ_FORECAST_FAIL'
+export const CHANGE_CITY_INPUT = 'CHANGE_CITY_INPUT'
