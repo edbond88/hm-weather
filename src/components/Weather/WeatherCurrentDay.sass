@@ -1,0 +1,61 @@
+.weather-current-item
+  display: flex
+  flex-direction: column
+  border: 1px solid #ccc
+  padding: 20px 15px
+
+  p
+    margin: 0 0 4px 0
+    font-size: 18px
+    line-height: 24px
+    font-weight: 300
+
+    &:last-child
+      margin-bottom: 0
+
+  &__head
+    color: #878787
+    margin-bottom: 40px
+
+    h2
+      margin: 0 0 10px 0
+      font-size: 28px
+      line-height: 28px
+      font-weight: 300
+
+  &__body
+    display: flex
+
+    @media only screen and (max-width: 520px)
+      flex-direction: column
+
+    &__left
+      display: flex
+      width: 50%
+
+      @media only screen and (max-width: 520px)
+        width: 100%
+        margin-bottom: 20px
+
+    &__right
+      width: 50%
+      color: #878787
+
+      @media only screen and (max-width: 520px)
+        width: 100%
+
+      p
+        b
+          font-weight: normal
+
+  &__img
+    margin-right: 10px
+
+  &__temp
+    display: flex
+    align-items: flex-start
+
+    b
+      font-weight: 400
+      font-size: 44px
+      line-height: 44px

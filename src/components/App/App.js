@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
-
 import './App.css'
-
-import Header from '../Header/Header'
-
-const defautlState = {
-}
+import Weather from '../../containers/Weather'
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = defautlState
+  _appInit () {
+    const {
+      appDataActions: {
+        appInit
+      }
+    } = this.props
+
+    appInit()
+  }
+
+  componentWillMount() {
+    if (!this.props.appDataProps.isInit) {
+      this._appInit()
+    }
   }
 
   render() {
     return (
       <div className="l-app">
-        <Header />
-        <div className="l-body">
-          weather start app
-        </div>
+        <Weather />
       </div>
     )
   }
