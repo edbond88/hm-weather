@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-import './WeatherCurrentDay.css'
+import './ForecastCurrentDay.css'
 
-class WeatherCurrentDay extends Component {
+class ForecastCurrentDay extends Component {
   static propTypes = {
     currentItem: PropTypes.shape({
       weather: PropTypes.arrayOf(PropTypes.shape({
@@ -58,4 +58,4 @@ class WeatherCurrentDay extends Component {
   }
 }
 
-export default WeatherCurrentDay
+export default ForecastCurrentDay

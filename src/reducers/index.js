@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
 
-import appData from './appData'
-import weather from './weather'
+import forecast from './forecast'
 
 export default combineReducers({
-  appData,
-  weather
+  forecast
 })
