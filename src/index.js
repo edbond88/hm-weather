@@ -7,7 +7,7 @@ import store from './store'
 import './index.css'
 
 const target = document.querySelector('#root')
-console.log('lolo')
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
