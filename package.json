@@ -4,19 +4,20 @@
   "private": false,
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  },
-  "devDependencies": {
-    "gh-pages": "^1.0.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
     "moment": "^2.18.1",
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.0.2",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
-    "react-scripts": "1.1.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "yql": "^1.0.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
