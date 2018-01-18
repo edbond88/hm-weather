@@ -9,7 +9,7 @@ const initialState = {
   cityInput: '',
   isForecastFetching: false,
   list: [],
-  city: {}
+  item: {}
 }
 
 export default function forecast (state = initialState, action) {
@@ -24,10 +24,11 @@ export default function forecast (state = initialState, action) {
       return { ...state, isForecastFetching: false }
 
     case FORECAST_SUCCESS:
+    console.log('action.payload', action.payload)
       return {
         ...state,
         list: action.payload.list,
-        city: action.payload.city,
+        item: action.payload.item,
         isForecastFetching: false
       }
 

@@ -13,7 +13,7 @@ class WeatherWidget extends Component {
     forecast: PropTypes.shape({
       cityInput: PropTypes.string.isRequired,
       list: PropTypes.array.isRequired,
-      city: PropTypes.object.isRequired
+      item: PropTypes.object.isRequired
     }).isRequired
   }
 
@@ -66,7 +66,7 @@ class WeatherWidget extends Component {
       forecast: {
         cityInput,
         list,
-        city
+        item
       }
     } = this.props
 
@@ -91,7 +91,7 @@ class WeatherWidget extends Component {
 
         <div className="b-weather__view">
           {list.length
-            ? <WeatherView weatherList={list} city={city}/>
+            ? <WeatherView list={list} item={item}/>
             : null
           }
         </div>

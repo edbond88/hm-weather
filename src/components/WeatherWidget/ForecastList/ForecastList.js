@@ -6,16 +6,13 @@ import './ForecastList.css'
 
 class ForecastList extends Component {
   static propTypes = {
-    list: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({
-      dt_txt: PropTypes.string,
-      weather: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.string,
-        main: PropTypes.string
-      })),
-      main: PropTypes.shape({
-        temp: PropTypes.number
-      })
-    })))
+    list: PropTypes.arrayOf(PropTypes.shape({
+      date: PropTypes.string,
+      day: PropTypes.string,
+      high: PropTypes.string,
+      low: PropTypes.string,
+      text: PropTypes.string,
+    }))
   }
 
   render() {
@@ -24,20 +21,13 @@ class ForecastList extends Component {
     return (
       <div className="weather-list-items">
         {list.map( (day, dayIdx) => {
-          const dateDay = moment(day[0].dt_txt).format('dddd')
           return (
             <div className="weather-list-item" key={dayIdx}>
-              <h3>{dateDay}</h3>
-              {day.map( (hour, hourIdx) => {
-                const iconUrl = process.env.PUBLIC_URL + '/icons/' + hour.weather[0].icon + '.png'
-                return (
-                  <div className="weather-list-hour" key={hourIdx}>
-                    <span className="weather-list-time">{moment(hour.dt_txt).format('HH:mm')}</span>
-                    <span className="weather-list-temp">{Math.round(hour.main.temp)}°C</span>
-                    <span className="weather-list-img"><img src={iconUrl} alt={hour.weather[0].main}/></span>
-                  </div>
-                )
-              })}
+              <h3>{`${day.date}, ${day.day}`}</h3>
+              <h4>{day.text}</h4>
+              <div className="weather-list-hour">
+                <span className="weather-list-temp">{`Min: ${day.low}°C, Max:${day.high}°C`}</span>
+              </div>
             </div>
           )
         })}

@@ -19,20 +19,34 @@ export const getForecast = (opt) => {
     dispatch({
       type: FORECAST_START
     })
+    let locationQuery
     let reqUrl
 
     if (opt.city) {
-      reqUrl = `${URL.forecast}?q=${opt.city}&APPID=${API_KEY}&units=metric`
+      locationQuery = `select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${opt.city}") and u="c"`
+      reqUrl = encodeURI(`https://query.yahooapis.com/v1/public/yql?q=${locationQuery}&format=json&env=store://datatables.org/alltableswithkeys`)
     } else if (opt.coords) {
-      reqUrl = `${URL.forecast}?lat=${opt.coords.lat}&lon=${opt.coords.lon}&APPID=${API_KEY}&units=metric`
+      locationQuery = `select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="(${opt.coords.lat},${opt.coords.lon})") and u="c"`
+      reqUrl = encodeURI(`https://query.yahooapis.com/v1/public/yql?q=${locationQuery}&format=json&env=store://datatables.org/alltableswithkeys`)
     }
 
     serverRequest({
       url: reqUrl
     }).then((res) => {
+      console.log('res', res.query.results.channel)
+      res = res.query.results.channel
+
       dispatch({
         type: FORECAST_SUCCESS,
-        payload: res
+        payload: {
+          item: {
+            city: res.location.city,
+            country: res.location.country,
+            temperature: res.item.condition.temp,
+            text: res.item.condition.text,
+          },
+          list: res.item.forecast,
+        }
       })
     })
     .catch((err) => {
